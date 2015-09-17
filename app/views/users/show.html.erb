@@ -1,4 +1,8 @@
 <h2>This is the show page for <%= @user.username %></h2>
 
+<% @user.ideas.each do |idea| %>
+  <%= content_tag :p, idea.title %>
+<% end %>
+
 <%= link_to "New Idea", new_idea_path %>
 
