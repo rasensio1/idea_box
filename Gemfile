@@ -20,7 +20,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 
   gem 'spring'
 end
