@@ -6,6 +6,7 @@
 
   <%= f.label :body %><br />
   <%= f.text_field :body %><br />
+  <%= collection_select(:idea, :category_id, Category.all,:id, :name) %>
 
   <%= f.submit "Submit" %>
 <% end %>
