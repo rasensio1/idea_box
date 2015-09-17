@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature "create ideas" do
-  scenario "with valid input" do
+feature "delete ideas" do
+  scenario "as a user" do
     visit '/'
 
     click_link("Sign up")
@@ -17,7 +17,12 @@ feature "create ideas" do
     fill_in "idea[body]", with: "Its a good one"
     click_on "Submit"
 
-    expect(current_path).to eq(user_path(7))
-    expect(page).to have_content("My first idea")
+    expect(current_path).to eq(user_path(2))
+
+    click_link("Delete")
+
+    expect(current_path).to eq(user_path(2))
+    expect(page).to_not have_content("My first idea")
+    
   end
 end

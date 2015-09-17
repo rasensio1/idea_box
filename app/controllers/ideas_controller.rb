@@ -5,14 +5,29 @@ class IdeasController < ApplicationController
   end
 
   def create
-    idea = Idea.new(idea_params)
+    idea = current_user.ideas.new(idea_params)
     if idea.save
       redirect_to user_path(current_user)
     else
       flash[:errors] = "Incorrect input params"
       redirect_to new_user_idea_path(current_user)
     end
+  end
 
+  def edit
+    @idea = Idea.find(params[:id])
+  end
+
+  def update
+    @idea = Idea.find(params[:id])
+    @idea.update(idea_params)
+    redirect_to user_path(current_user)
+  end
+
+  def destroy
+    @idea = Idea.find(params[:id])
+    @idea.delete 
+    redirect_to user_path(current_user)
   end
 
   private

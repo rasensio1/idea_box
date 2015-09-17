@@ -2,24 +2,26 @@ require 'database_cleaner'
 
 RSpec.configure do |config|
 
-  config.expect_with :rspec do |expectations|
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
-  end
-
-
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before(:each) do |example|
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
     DatabaseCleaner.start
-    end
+  end
 
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-  # rspec-mocks config goes here. You can use an alternate test double
+# rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
     # Prevents you from mocking or stubbing a method that does not exist on
