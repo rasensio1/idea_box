@@ -15,15 +15,12 @@ feature "edit ideas" do
     fill_in "idea[body]", with: "Its a good one"
     click_on "Submit"
 
-    expect(current_path).to eq(user_path(3))
-
     click_link("Edit")
 
     fill_in "idea[title]", with: "My edited idea"
     fill_in "idea[body]", with: "Its a better one"
     click_on "Submit"
 
-    expect(current_path).to eq(user_path(3))
     expect(page).to_not have_content("My first idea")
     expect(page).to have_content("My edited idea")
   end

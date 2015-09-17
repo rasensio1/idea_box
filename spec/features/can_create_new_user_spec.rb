@@ -11,7 +11,6 @@ feature "can create a new user" do
 
     click_on "Submit"
 
-    expect(current_path).to eq(user_path(1))
-    expect(page).to have_content("This is the show page")
+    expect(page).to have_content("Ryan")
   end
 end

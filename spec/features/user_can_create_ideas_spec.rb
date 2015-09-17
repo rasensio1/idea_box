@@ -17,7 +17,6 @@ feature "create ideas" do
     fill_in "idea[body]", with: "Its a good one"
     click_on "Submit"
 
-    expect(current_path).to eq(user_path(7))
     expect(page).to have_content("My first idea")
   end
 end
