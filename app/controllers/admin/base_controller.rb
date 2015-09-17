@@ -3,6 +3,6 @@ class Admin::BaseController < ApplicationController
    
 
   def require_admin
-    render text: "Sorry" unless current_admin?
+    render text: "Sorry, only Admins belong here" unless current_admin?
   end
 end

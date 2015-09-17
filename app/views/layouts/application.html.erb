@@ -22,5 +22,9 @@
 
 <%= yield %>
 
+<% if current_admin? %>
+  <%= link_to "Edit Categories", admin_categories_path %>
+<% end %>
+
 </body>
 </html>

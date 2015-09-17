@@ -1,4 +1,9 @@
 <h2> This is the Categories index page </h2>
 <h2> ADMIN ONLY </h2>
 
+<% @categories.each do |c| %> 
+  <h4><%= c.name %> | <%= link_to "Delete", admin_category_path(c), method: :delete %></h4>
+<% end %>
+    
+
 <h3> <%= link_to "New Category", new_admin_category_path %>

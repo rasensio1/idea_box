@@ -1,7 +1,8 @@
+
 require 'rails_helper'
 
-feature "admin can create categories" do
-  scenario "with valid input" do
+feature "delete categories" do
+  scenario "as admin" do
     visit '/'
 
     click_link("Sign up")
@@ -18,10 +19,15 @@ feature "admin can create categories" do
 
     click_link("New Category")
 
-    fill_in "category[title]", with: "Some category"
+    fill_in "category[name]", with: "Some category"
     click_on "Submit"
 
     expect(current_path).to eq(admin_categories_path)
     expect(page).to have_content("Some category")
+
+    click_on "Delete"
+    expect(current_path).to eq(admin_categories_path)
+    expect(page).to_not have_content("Some category")
+
   end
 end

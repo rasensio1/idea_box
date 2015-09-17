@@ -1,8 +1,8 @@
 <h2> This is for creating new categories </h2>
 
-<%= form_for @category  do |f| %>
-  <%= f.label :title %><br />
-  <%= f.text_field :title %><br />
+<%= form_for @category, url: admin_categories_path  do |f| %>
+  <%= f.label :name %><br />
+  <%= f.text_field :name %><br />
 
   <%= f.submit "Submit" %>
 <% end %>
