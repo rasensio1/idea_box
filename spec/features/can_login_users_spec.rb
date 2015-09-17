@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "can logout users" do
+feature "can login and logout users" do
   scenario "if just registered" do
     visit '/'
 
@@ -12,6 +12,15 @@ feature "can logout users" do
     expect(page).to have_content("This is the show page")
 
     click_on "Logout"
+
     expect(current_path).to eq(root_path)
+    expect(page).to have_content("Sign up")
+
+    click_on "Log In"
+    fill_in "session[username]", with: "Ryan"
+    fill_in "session[password]", with: "password"
+    click_on "Submit"
+
+    expect(page).to have_content("This is the show page")
   end
 end

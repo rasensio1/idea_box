@@ -21,6 +21,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'launchy'
 
   gem 'spring'
 end
