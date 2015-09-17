@@ -33,8 +33,7 @@ feature "create ideas" do
     save_and_open_page
     fill_in "idea[title]", with: "My first idea"
     fill_in "idea[body]", with: "Its a good one"
-    click_on "categories"
-    click_on "Life"
+    select("Life", :from => 'idea[category_id]')
     click_on "Submit"
 
     expect(page).to have_content("My first idea")
