@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "ideas#index"
-  resources :users, only: [:index, :new, :create, :show]
+  resources :users, only: [:index, :new, :create, :show] do
+    resources :ideas, only: [:new, :show, :create, :destroy ]
+  end
   
   resources :sessions, only: [:new]
   post '/login' => "sessions#create"
@@ -10,5 +12,4 @@ Rails.application.routes.draw do
     resources :categories, only: [:index]
   end
 
-  resources :ideas
 end

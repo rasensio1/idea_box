@@ -10,7 +10,7 @@ class IdeasController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:errors] = "Incorrect input params"
-      redirect_to new_idea_path
+      redirect_to new_user_idea_path(current_user)
     end
 
   end
