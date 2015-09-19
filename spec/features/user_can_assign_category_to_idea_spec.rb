@@ -30,7 +30,6 @@ feature "create ideas" do
     click_on "Submit"
 
     click_link("New Idea")
-    save_and_open_page
     fill_in "idea[title]", with: "My first idea"
     fill_in "idea[body]", with: "Its a good one"
     select("Life", :from => 'idea[category_id]')
